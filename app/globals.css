@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-purple: #6A459B;
+  --color-purple-hover: #7D52B0;
+  --color-dark: #1D1D1B;
+  --color-white: #FFFFFF;
+  --color-gray: #58595B;
+  --color-gray-light: #F5F5F5;
+  --font-sans: var(--font-raleway);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --color-purple: #6A459B;
+  --color-purple-hover: #7D52B0;
+  --color-dark: #1D1D1B;
+  --color-white: #FFFFFF;
+  --color-gray: #58595B;
+  --color-gray-light: #F5F5F5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1D1D1B;
+  color: #FFFFFF;
+  font-family: var(--font-raleway, 'Raleway', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Gradient text class for H1 ── */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 60%, rgba(106, 69, 155, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Hero section base ── */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Film grain overlay ── */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── EKG draw-in animation ── */
+.ekg-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  opacity: 0;
+  animation: drawEKG 3.2s ease-in-out 0.5s forwards;
+}
+
+@keyframes drawEKG {
+  from {
+    stroke-dashoffset: 2000;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.20;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.20;
+  }
+}
+
+/* ── Gradient orb drift keyframes ── */
+@keyframes driftA {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(50px, -35px) scale(1.08);
+  }
+  70% {
+    transform: translate(-25px, 25px) scale(0.94);
+  }
+}
+
+@keyframes driftB {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(-60px, 40px) scale(0.93);
+  }
+  70% {
+    transform: translate(35px, -45px) scale(1.07);
+  }
+}
+
+@keyframes driftC {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-28px);
+  }
+}
+
+/* ── Scroll indicator bounce ── */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(9px);
+    opacity: 0.65;
+  }
+}
+
+.bob-animation {
+  animation: bob 2.4s ease-in-out infinite;
+}
