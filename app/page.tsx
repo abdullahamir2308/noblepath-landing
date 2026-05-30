@@ -4,6 +4,9 @@ import TrustStrip from "@/components/sections/TrustStrip";
 import WhyNoblePath from "@/components/sections/WhyNoblePath";
 import Capabilities from "@/components/sections/Capabilities";
 import TherapeuticFocus from "@/components/sections/TherapeuticFocus";
+import NetworkSites from "@/components/sections/NetworkSites";
+import Services from "@/components/sections/Services";
+import HowWeWork from "@/components/sections/HowWeWork";
 
 export default function Page() {
   return (
@@ -14,6 +17,9 @@ export default function Page() {
       <WhyNoblePath />
       <Capabilities />
       <TherapeuticFocus />
+      <NetworkSites />
+      <Services />
+      <HowWeWork />
     </>
   );
 }
