@@ -7,6 +7,9 @@ import TherapeuticFocus from "@/components/sections/TherapeuticFocus";
 import NetworkSites from "@/components/sections/NetworkSites";
 import Services from "@/components/sections/Services";
 import HowWeWork from "@/components/sections/HowWeWork";
+import Academy from "@/components/sections/Academy";
+import BottomCTA from "@/components/sections/BottomCTA";
+import Footer from "@/components/footer/Footer";
 
 export default function Page() {
   return (
@@ -20,6 +23,9 @@ export default function Page() {
       <NetworkSites />
       <Services />
       <HowWeWork />
+      <Academy />
+      <BottomCTA />
+      <Footer />
     </>
   );
 }
