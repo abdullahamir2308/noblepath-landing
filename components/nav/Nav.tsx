@@ -147,7 +147,7 @@ export default function Nav() {
         <Logo />
 
         {/* CENTER — Desktop nav links (hidden on mobile) */}
-        <nav aria-label="Primary" className="hidden md:flex" style={{ gap: "32px", alignItems: "center", display: "flex" }}>
+        <nav aria-label="Primary" className="hidden md:flex" style={{ gap: "32px", alignItems: "center" }}>
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -195,10 +195,10 @@ export default function Nav() {
           <BookButton />
 
           {/* Hamburger — mobile only */}
+          <div className="flex md:hidden" style={{ alignItems: "center" }}>
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger
               aria-label="Open navigation menu"
-              className="md:hidden"
               style={{
                 background: "none",
                 border: "none",
@@ -273,6 +273,7 @@ export default function Nav() {
               </div>
             </SheetContent>
           </Sheet>
+          </div>
         </div>
       </div>
     </motion.nav>
