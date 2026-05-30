@@ -12,7 +12,7 @@ import {
 
 const NAV_LINKS = [
   { label: "Why NoblePath", href: "#why" },
-  { label: "Our Sites", href: "#sites" },
+  { label: "Our Sites", href: "#network" },
   { label: "Services", href: "#services" },
   { label: "Academy", href: "#academy" },
 ] as const;
