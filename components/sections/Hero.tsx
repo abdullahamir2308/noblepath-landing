@@ -178,7 +178,7 @@ export default function Hero() {
           position: "absolute",
           left: 0,
           right: 0,
-          bottom: "8%",
+          bottom: 'clamp(60px, 12%, 16%)',
           zIndex: 2,
           pointerEvents: "none",
           overflow: "hidden",
@@ -270,7 +270,71 @@ export default function Hero() {
             margin: "0 0 22px",
           }}
         >
-          Your Clinical Research Partner in Türkiye
+          Your Clinical Research Partner in{" "}
+          <span
+            style={{
+              position: "relative",
+              display: "inline-block",
+            }}
+          >
+            <motion.span
+              {...fade(0.68)}
+              className="gradient-text"
+              style={{ display: "inline-block" }}
+            >
+              Türkiye
+            </motion.span>
+            {/* Underline — wavy path that draws in, then a pulse travels along it */}
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 200 10"
+              preserveAspectRatio="none"
+              style={{
+                position: "absolute",
+                bottom: "-6px",
+                left: 0,
+                width: "100%",
+                height: "10px",
+                overflow: "visible",
+              }}
+            >
+              {/* Base wave — draws in on load */}
+              <motion.path
+                d="M 0,5 C 25,0 50,10 75,5 C 100,0 125,10 150,5 C 175,0 200,8 200,5"
+                fill="none"
+                stroke="#6A459B"
+                strokeWidth="2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{
+                  pathLength: { duration: 0.8, ease: "easeInOut", delay: 1.4 },
+                  opacity: { duration: 0.01, delay: 1.4 },
+                }}
+              />
+              {/* Pulse — bright highlight travelling along the wave after draw completes */}
+              <motion.path
+                d="M 0,5 C 25,0 50,10 75,5 C 100,0 125,10 150,5 C 175,0 200,8 200,5"
+                fill="none"
+                stroke="rgba(255,255,255,0.7)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeDasharray="30 200"
+                initial={{ strokeDashoffset: 230, opacity: 0 }}
+                animate={{
+                  strokeDashoffset: -230,
+                  opacity: [0, 1, 1, 0],
+                }}
+                transition={{
+                  duration: 1.8,
+                  ease: "easeInOut",
+                  delay: 2.4,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                }}
+              />
+            </svg>
+          </span>
         </motion.h1>
 
         {/* 3. Subheadline */}
@@ -337,8 +401,10 @@ export default function Hero() {
           </motion.a>
 
           {/* Secondary — send a feasibility brief */}
-          <motion.button
-            onClick={handleNovaClick}
+          <motion.a
+            href="https://forms.gle/EZ3eW68p2kFShuan8"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -354,16 +420,17 @@ export default function Hero() {
               fontFamily: "var(--font-raleway, Raleway, sans-serif)",
               fontWeight: 400,
               fontSize: "14px",
+              textDecoration: "none",
               transition: "border-color 0.2s, color 0.2s, background 0.2s",
             }}
             onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLButtonElement;
+              const el = e.currentTarget as HTMLAnchorElement;
               el.style.borderColor = "rgba(106,69,155,0.55)";
               el.style.color = "#fff";
               el.style.background = "rgba(106,69,155,0.08)";
             }}
             onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLButtonElement;
+              const el = e.currentTarget as HTMLAnchorElement;
               el.style.borderColor = "rgba(255,255,255,0.22)";
               el.style.color = "rgba(255,255,255,0.72)";
               el.style.background = "transparent";
@@ -371,7 +438,7 @@ export default function Hero() {
           >
             Or send a feasibility brief
             <ArrowRight size={14} />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
 
