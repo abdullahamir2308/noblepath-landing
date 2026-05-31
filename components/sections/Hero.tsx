@@ -37,6 +37,7 @@ function ScrollCue() {
         bottom: "32px",
         left: "50%",
         transform: "translateX(-50%)",
+        animation: "bob-center 2.4s ease-in-out infinite",
         background: "none",
         border: "none",
         cursor: "pointer",
@@ -103,6 +104,18 @@ export default function Hero() {
         .pill-shimmer-2::after { animation-delay: 1.1s; }
         .pill-shimmer-3::after { animation-delay: 1.3s; }
         .pill-shimmer-4::after { animation-delay: 1.5s; }
+
+        @keyframes bob-center {
+          0%,
+          100% {
+            transform: translateX(-50%) translateY(0);
+            opacity: 0.35;
+          }
+          50% {
+            transform: translateX(-50%) translateY(9px);
+            opacity: 0.65;
+          }
+        }
       `}</style>
       <section
         className="hero-section"
@@ -178,7 +191,8 @@ export default function Hero() {
           position: "absolute",
           left: 0,
           right: 0,
-          bottom: 'clamp(60px, 12%, 16%)',
+          bottom: 0,
+          paddingBottom: '40px',
           zIndex: 2,
           pointerEvents: "none",
           overflow: "hidden",
