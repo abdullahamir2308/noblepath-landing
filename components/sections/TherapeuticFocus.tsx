@@ -114,7 +114,7 @@ function TherapeuticCard({
           src={imageSrc}
           alt=""
           fill
-          style={{ objectFit: "cover", opacity: 0.2 }}
+          style={{ objectFit: "cover", opacity: 0.25 }}
         />
       )}
       <div style={{ position: "relative", zIndex: 1 }}>
@@ -133,8 +133,8 @@ function TherapeuticCard({
           style={{
             fontFamily: "var(--font-raleway, Raleway, sans-serif)",
             fontWeight: 300,
-            fontSize: "13px",
-            color: "rgba(255,255,255,0.6)",
+            fontSize: "14px",
+            color: "rgba(255,255,255,0.72)",
             lineHeight: 1.7,
             marginTop: "8px",
             marginBottom: 0,

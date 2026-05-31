@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
+import { images } from "@/config/images";
 
 const RALEWAY = "var(--font-raleway, Raleway, sans-serif)";
 const MONO = "var(--font-mono, 'IBM Plex Mono', monospace)";
@@ -135,8 +137,19 @@ export default function HowWeWork() {
           "radial-gradient(rgba(106,69,155,0.10) 1px, transparent 1px)",
         backgroundSize: "28px 28px",
         position: "relative",
+        overflow: "hidden",
       }}
     >
+      {images.howWeWork && (
+        <Image
+          src={images.howWeWork}
+          alt=""
+          fill
+          style={{ objectFit: "cover", opacity: 0.08, zIndex: 0 }}
+          aria-hidden="true"
+        />
+      )}
+
       <style>{`
         .hww-steps {
           display: flex;
@@ -167,6 +180,7 @@ export default function HowWeWork() {
         }
       `}</style>
 
+      <div style={{ position: "relative", zIndex: 10 }}>
       <div aria-hidden="true" style={DIVIDER} />
 
       <div style={{ padding: "110px 24px" }}>
@@ -237,6 +251,7 @@ export default function HowWeWork() {
             <Step key={step.numeral} {...step} />
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

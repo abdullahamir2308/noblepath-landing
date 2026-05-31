@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { BookOpen } from "lucide-react";
 import ParticleBackground from "@/components/ui/ParticleBackground";
@@ -16,10 +17,13 @@ const DIVIDER = {
 const PHOTO_PLACEHOLDER =
   "linear-gradient(135deg, rgba(106,69,155,0.1), rgba(29,29,27,0.95))";
 
+const IMAGE_H = 175;
+
 interface CourseData {
   title: string;
   description: string;
   delay: number;
+  image: string | null;
 }
 
 const COURSES: CourseData[] = [
@@ -28,28 +32,32 @@ const COURSES: CourseData[] = [
     description:
       "ICH E6(R2) Good Clinical Practice — foundational certification for all clinical research professionals operating under international standards.",
     delay: 0,
+    image: images.academyGCP,
   },
   {
     title: "Source Document Training",
     description:
       "Best-practice training on source data integrity, contemporaneous recording, and audit-trail requirements for site teams.",
     delay: 0.06,
+    image: images.academySourceDocs,
   },
   {
     title: "Site Management Training",
     description:
       "End-to-end site management methodology — qualification, activation, performance oversight, and close-out.",
     delay: 0.12,
+    image: images.academySiteManagement,
   },
   {
     title: "Site Coordination Training",
     description:
       "Practical coordination skills for study coordinators — patient scheduling, ICF management, regulatory documentation, and sponsor communication.",
     delay: 0.18,
+    image: images.academySiteCoordination,
   },
 ];
 
-function CourseCard({ title, description, delay }: CourseData) {
+function CourseCard({ title, description, delay, image }: CourseData) {
   return (
     <motion.div
       className="academy-card"
@@ -58,7 +66,8 @@ function CourseCard({ title, description, delay }: CourseData) {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ type: "spring", stiffness: 90, damping: 14, delay, duration: 0.45 }}
       style={{
-        background: "rgba(255,255,255,0.025)",
+        position: "relative",
+        background: image ? "rgba(255,255,255,0.025)" : PHOTO_PLACEHOLDER,
         border: "1px solid rgba(255,255,255,0.07)",
         borderRadius: "16px",
         overflow: "hidden",
@@ -66,24 +75,43 @@ function CourseCard({ title, description, delay }: CourseData) {
         flexDirection: "column",
       }}
     >
-      {/* Photo slot — image when available, dark gradient placeholder when null */}
+      {image && (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: `${IMAGE_H}px`,
+            zIndex: 0,
+          }}
+        >
+          <Image
+            src={image}
+            alt=""
+            fill
+            style={{ objectFit: "cover", objectPosition: "center center", opacity: 0.50 }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(180deg, transparent 0%, #1D1D1B 100%)",
+              zIndex: 1,
+            }}
+          />
+        </div>
+      )}
+
       <div
         style={{
-          height: "116px",
-          background: images.academy
-            ? `url(${images.academy}) center / cover no-repeat`
-            : PHOTO_PLACEHOLDER,
-          display: "flex",
-          alignItems: "flex-end",
-          padding: "0 24px 0",
           position: "relative",
+          zIndex: 2,
+          padding: image ? `${IMAGE_H + 14}px 24px 28px` : "34px 24px 28px",
         }}
       >
         <div
           style={{
-            position: "absolute",
-            left: "24px",
-            bottom: "-22px",
             width: "44px",
             height: "44px",
             borderRadius: "11px",
@@ -92,13 +120,11 @@ function CourseCard({ title, description, delay }: CourseData) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            marginBottom: "14px",
           }}
         >
           <BookOpen size={20} color="#6A459B" />
         </div>
-      </div>
-
-      <div style={{ padding: "34px 24px 28px" }}>
         <h3
           style={{
             fontFamily: RALEWAY,
@@ -115,7 +141,7 @@ function CourseCard({ title, description, delay }: CourseData) {
           style={{
             fontFamily: RALEWAY,
             fontWeight: 300,
-            fontSize: "13px",
+            fontSize: "14px",
             color: "rgba(255,255,255,0.6)",
             lineHeight: 1.75,
             margin: 0,

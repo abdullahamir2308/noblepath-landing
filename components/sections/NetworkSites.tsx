@@ -198,8 +198,8 @@ export default function NetworkSites() {
           padding: 10px 0;
           font-family: var(--font-raleway, Raleway, sans-serif);
           font-weight: 300;
-          font-size: 13px;
-          color: rgba(255,255,255,0.7);
+          font-size: 14px;
+          color: rgba(255,255,255,0.75);
           line-height: 1.8;
         }
         .ns-metric-item:last-child {
@@ -336,8 +336,8 @@ export default function NetworkSites() {
                 <p
                   style={{
                     fontFamily: RALEWAY,
-                    fontWeight: 300,
-                    fontSize: "13px",
+                    fontWeight: 400,
+                    fontSize: "14px",
                     color: "rgba(255,255,255,0.6)",
                     lineHeight: 1.7,
                     margin: "0 0 16px 0",
@@ -406,7 +406,7 @@ export default function NetworkSites() {
                         padding: "4px 12px",
                         fontFamily: RALEWAY,
                         fontWeight: 400,
-                        fontSize: "11px",
+                        fontSize: "12px",
                         color: "rgba(255,255,255,0.55)",
                       }}
                     >
@@ -420,7 +420,7 @@ export default function NetworkSites() {
                   style={{
                     fontFamily: RALEWAY,
                     fontWeight: 500,
-                    fontSize: "12px",
+                    fontSize: "13px",
                     color: "#6A459B",
                     textTransform: "uppercase",
                     letterSpacing: "0.15em",
@@ -512,8 +512,8 @@ export default function NetworkSites() {
                 <p
                   style={{
                     fontFamily: RALEWAY,
-                    fontWeight: 300,
-                    fontSize: "13px",
+                    fontWeight: 400,
+                    fontSize: "14px",
                     color: "rgba(255,255,255,0.6)",
                     lineHeight: 1.7,
                     margin: "0 0 16px 0",
@@ -589,8 +589,8 @@ export default function NetworkSites() {
                   <p
                     style={{
                       fontFamily: RALEWAY,
-                      fontWeight: 300,
-                      fontSize: "13px",
+                      fontWeight: 400,
+                      fontSize: "14px",
                       color: "rgba(255,255,255,0.7)",
                       margin: "0 0 6px 0",
                       lineHeight: 1.6,
@@ -603,7 +603,7 @@ export default function NetworkSites() {
                     style={{
                       fontFamily: RALEWAY,
                       fontWeight: 300,
-                      fontSize: "13px",
+                      fontSize: "14px",
                       color: "rgba(255,255,255,0.7)",
                       margin: 0,
                       lineHeight: 1.6,
