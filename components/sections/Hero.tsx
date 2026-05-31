@@ -229,6 +229,7 @@ export default function Hero() {
         {/* 1. Trust pills */}
         <motion.div
           {...fade(0.15)}
+          className="a1 trust-pills"
           style={{
             display: "flex",
             flexWrap: "wrap",
