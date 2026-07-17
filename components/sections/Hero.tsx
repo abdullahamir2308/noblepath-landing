@@ -11,7 +11,9 @@ const TRUST_PILLS = [
   "Ethics-First Governance",
 ] as const;
 
-const BOOK_HREF = "mailto:dilek.coban@noblepathcro.com";
+const BOOK_HREF =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ??
+  "https://calendly.com/fatimaamir404/30-minute-discovery-call";
 
 function fade(delay: number) {
   const transition: Transition = { duration: 0.7, ease: "easeOut", delay };
@@ -66,12 +68,13 @@ function ScrollCue() {
 }
 
 export default function Hero() {
-  const handleNovaClick = () => {
-    if (typeof window !== "undefined" && typeof (window as Window & { __novaOpen?: () => void }).__novaOpen === "function") {
-      (window as Window & { __novaOpen?: () => void }).__novaOpen?.();
-    } else {
-      window.location.href = "#contact";
+  const handleNovaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const novaOpen = (window as Window & { __novaOpen?: () => void }).__novaOpen;
+    if (typeof novaOpen === "function") {
+      e.preventDefault();
+      novaOpen();
     }
+    // else: fall through to the anchor's native href="#contact" navigation
   };
 
   return (
@@ -385,6 +388,8 @@ export default function Hero() {
           {/* Primary — Book a Call */}
           <motion.a
             href={BOOK_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -417,9 +422,8 @@ export default function Hero() {
 
           {/* Secondary — send a feasibility brief */}
           <motion.a
-            href="https://forms.gle/EZ3eW68p2kFShuan8"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
+            onClick={handleNovaClick}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             style={{

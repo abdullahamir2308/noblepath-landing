@@ -9,10 +9,12 @@ interface ContactLine {
   href?: string;
 }
 
+const CALENDLY_URL =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ??
+  "https://calendly.com/fatimaamir404/30-minute-discovery-call";
+
 const CONTACT_LINES: ContactLine[] = [
-  { text: "Dilek Çoban — Founder & Managing Director" },
   { text: "NoblePath CRO — Ankara, Türkiye" },
-  { text: "dilek.coban@noblepathcro.com", href: "mailto:dilek.coban@noblepathcro.com" },
   { text: "info@noblepathcro.com", href: "mailto:info@noblepathcro.com" },
   { text: "+90 553 425 54 15", href: "tel:+905534255415" },
 ];
@@ -93,11 +95,13 @@ export default function BottomCTA() {
         }}
       >
         Send a feasibility request or book a 30-minute call directly with our
-        Founder.
+        team.
       </motion.p>
 
       <motion.a
-        href="mailto:dilek.coban@noblepathcro.com"
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="cta-book"
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.97 }}

@@ -99,7 +99,7 @@ export default function RootLayout({
           }}
         />
         <Script
-          src="https://noblepath-chatbot.vercel.app/widget.js"
+          src="https://nova-agent-kit.vercel.app/nova.js"
           strategy="lazyOnload"
         />
       </body>

@@ -17,7 +17,9 @@ const NAV_LINKS = [
   { label: "Academy", href: "#academy" },
 ] as const;
 
-const BOOK_HREF = "mailto:dilek.coban@noblepathcro.com";
+const BOOK_HREF =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ??
+  "https://calendly.com/fatimaamir404/30-minute-discovery-call";
 
 function Logo() {
   return (
@@ -68,6 +70,8 @@ function BookButton({ fullWidth = false }: { fullWidth?: boolean }) {
   return (
     <a
       href={BOOK_HREF}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{
         display: "inline-flex",
         alignItems: "center",
