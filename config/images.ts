@@ -13,7 +13,7 @@ export const images = {
   // Section 06 — Network Sites (3 hospitals)
   siteHacettepe: "/images/sites/hacettepe.jpg",
   siteBilkent:   "/images/sites/bilkent.jpg",
-  siteAnkaraOncology: null as string | null,
+  siteAnkaraOncology: "/images/sites/ankara-oncology.jpg",
 
   // Section 08 — How We Work (optional bg)
   howWeWork: "/images/sections/how-we-work.jpg",
