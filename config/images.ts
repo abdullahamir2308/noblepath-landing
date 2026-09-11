@@ -10,9 +10,10 @@ export const images = {
   therapeuticInfectious:    "/images/therapeutic/infectious.jpg",
   therapeuticImmunology:    "/images/therapeutic/immunology.jpg",
 
-  // Section 06 — Network Sites (2 hospitals)
+  // Section 06 — Network Sites (3 hospitals)
   siteHacettepe: "/images/sites/hacettepe.jpg",
   siteBilkent:   "/images/sites/bilkent.jpg",
+  siteAnkaraOncology: null as string | null,
 
   // Section 08 — How We Work (optional bg)
   howWeWork: "/images/sections/how-we-work.jpg",

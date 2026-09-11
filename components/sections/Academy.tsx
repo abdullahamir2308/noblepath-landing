@@ -90,6 +90,7 @@ function CourseCard({ title, description, delay, image }: CourseData) {
             src={image}
             alt=""
             fill
+            sizes="(min-width: 948px) 441px, (min-width: 768px) 50vw, 100vw"
             style={{ objectFit: "cover", objectPosition: "center center", opacity: 0.50 }}
           />
           <div

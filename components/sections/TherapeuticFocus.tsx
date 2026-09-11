@@ -114,6 +114,7 @@ function TherapeuticCard({
           src={imageSrc}
           alt=""
           fill
+          sizes="(min-width: 1128px) 348px, (min-width: 768px) 33vw, 100vw"
           style={{ objectFit: "cover", opacity: 0.25 }}
         />
       )}

@@ -145,6 +145,7 @@ export default function HowWeWork() {
           src={images.howWeWork}
           alt=""
           fill
+          sizes="100vw"
           style={{ objectFit: "cover", opacity: 0.08, zIndex: 0 }}
           aria-hidden="true"
         />

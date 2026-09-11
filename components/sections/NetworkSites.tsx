@@ -15,6 +15,9 @@ const DIVIDER = {
     "linear-gradient(90deg, transparent, rgba(106,69,155,0.28), transparent)",
 } as const;
 
+// Full-width cards: 1100px container + 24px section padding each side
+const SITE_IMAGE_SIZES = "(min-width: 1148px) 1100px, 100vw";
+
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
 function AccreditationBadge({
@@ -130,6 +133,23 @@ const BILKENT_METRICS = [
   "Two additional IRBs for non-interventional studies",
 ];
 
+const ANKARA_ONCOLOGY_METRICS = [
+  "125 active clinical studies in 2025 — 74 Medical Oncology · 51 Hematology",
+  "116 trials conducted since 2019 (62 Medical Oncology · 54 Hematology)",
+  "Clinical trial enrollment nearly doubled: 154 (2022) → 162 (2023) → 234 (2024)",
+  "Hematology-oncology registry (2017–2024): 23,110 patients — including 8,249 lymphoma, 5,910 myeloma, 4,962 leukemia",
+  "CAR-T Cell Therapy Program: 3 active protocols (autologous & allogeneic, Phase I/II), 39 infusions delivered with zero Grade 3–4 adverse events",
+  "Clinical Research Ethics Committee: 13 members across 11 specialties, weekly sessions, ~2-week decision turnaround",
+  "Site team: 43 dedicated site coordinators, 7 research nurses, plus Quality Management, Feasibility, and Statistics units",
+];
+
+const ANKARA_ONCOLOGY_PROGRAMS = [
+  "CAR-T Program",
+  "43 Coordinators",
+  "Weekly EC Sessions",
+  "7–10 Day Contract Turnaround",
+];
+
 // ─── PI List (shared render, toggled on mobile) ────────────────────────────────
 
 function PIList() {
@@ -173,6 +193,7 @@ export default function NetworkSites() {
 
   const hacettepeBg = images.siteHacettepe;
   const bilkentBg = images.siteBilkent;
+  const ankaraOncologyBg = images.siteAnkaraOncology;
 
   return (
     <section
@@ -313,6 +334,7 @@ export default function NetworkSites() {
                 src={hacettepeBg}
                 alt=""
                 fill
+                sizes={SITE_IMAGE_SIZES}
                 style={{ objectFit: "cover", opacity: 0.15 }}
               />
             )}
@@ -489,6 +511,7 @@ export default function NetworkSites() {
                 src={bilkentBg}
                 alt=""
                 fill
+                sizes={SITE_IMAGE_SIZES}
                 style={{ objectFit: "cover", opacity: 0.15 }}
               />
             )}
@@ -612,6 +635,170 @@ export default function NetworkSites() {
                     6 dedicated Site Coordinators
                   </p>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── Card 3 — Ankara Oncology ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.08 }}
+            transition={{
+              type: "spring",
+              stiffness: 90,
+              damping: 14,
+              delay: 0.24,
+            }}
+            style={{
+              position: "relative",
+              borderRadius: "16px",
+              overflow: "hidden",
+              background: ankaraOncologyBg
+                ? "rgba(255,255,255,0.025)"
+                : "linear-gradient(135deg, rgba(139,69,19,0.12), rgba(29,29,27,0.95))",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+          >
+            {ankaraOncologyBg && (
+              <Image
+                src={ankaraOncologyBg}
+                alt=""
+                fill
+                sizes={SITE_IMAGE_SIZES}
+                style={{ objectFit: "cover", opacity: 0.15 }}
+              />
+            )}
+            <div
+              className="ns-card-inner"
+              style={{ position: "relative", zIndex: 1 }}
+            >
+              {/* LEFT */}
+              <div>
+                <h3
+                  style={{
+                    fontFamily: RALEWAY,
+                    fontWeight: 600,
+                    fontSize: "20px",
+                    color: "#FFFFFF",
+                    margin: "0 0 8px 0",
+                  }}
+                >
+                  Ankara Oncology Hospital Clinical Research Center
+                </h3>
+                <p
+                  style={{
+                    fontFamily: RALEWAY,
+                    fontWeight: 400,
+                    fontSize: "14px",
+                    color: "rgba(255,255,255,0.6)",
+                    lineHeight: 1.7,
+                    margin: "0 0 16px 0",
+                  }}
+                >
+                  Ankara, Türkiye — University of Health Sciences, Dr.
+                  Abdurrahman Yurtarslan Ankara Oncology Training and Research
+                  Hospital, Clinical Research Center. One of Türkiye&apos;s most
+                  active hematology-oncology trial centers, with an established
+                  CAR-T cell therapy program.
+                </p>
+                <div style={{ marginBottom: "28px" }}>
+                  <AccreditationBadge label="TITCK" purple />
+                </div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "16px",
+                  }}
+                >
+                  <StatCallout
+                    value={125}
+                    label="active studies (2025)"
+                    numeric
+                    mounted={mounted}
+                  />
+                  <StatCallout
+                    value={23110}
+                    label="patient hematology registry"
+                    numeric
+                    mounted={mounted}
+                  />
+                  <StatCallout
+                    value={11}
+                    label="sponsor & regulatory audits passed"
+                    numeric
+                    mounted={mounted}
+                  />
+                </div>
+              </div>
+
+              {/* RIGHT */}
+              <div>
+                <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                  {ANKARA_ONCOLOGY_METRICS.map((item) => (
+                    <li key={item} className="ns-metric-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Program pills */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                    marginTop: "16px",
+                  }}
+                >
+                  {ANKARA_ONCOLOGY_PROGRAMS.map((program) => (
+                    <span
+                      key={program}
+                      style={{
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        borderRadius: "9999px",
+                        padding: "4px 12px",
+                        fontFamily: RALEWAY,
+                        fontWeight: 400,
+                        fontSize: "12px",
+                        color: "rgba(255,255,255,0.55)",
+                      }}
+                    >
+                      {program}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Leadership heading */}
+                <div
+                  style={{
+                    fontFamily: RALEWAY,
+                    fontWeight: 500,
+                    fontSize: "13px",
+                    color: "#6A459B",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.15em",
+                    marginTop: "20px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  Leadership
+                </div>
+                <p
+                  style={{
+                    fontFamily: RALEWAY,
+                    fontWeight: 400,
+                    fontSize: "13px",
+                    color: "rgba(255,255,255,0.5)",
+                    margin: 0,
+                  }}
+                >
+                  Clinical Research Center led by{" "}
+                  <span style={{ color: "#FFFFFF" }}>
+                    Prof. Dr. Fevzi Altuntaş
+                  </span>
+                </p>
               </div>
             </div>
           </motion.div>
